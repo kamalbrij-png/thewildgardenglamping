@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZSZQ62F03V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZSZQ62F03V');
+</script>
+
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Wild Garden Glamping | Unique Luxury Cabins Near Jim Corbett</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f8f5ef;
+      color: #1f1f1f;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+
+    a[href^="tel"] {
+  color: inherit;
+  text-decoration: none;
+     }
+
+   .hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-slider {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: heroFade 18s infinite;
+}
+
+.hero-slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+}
+
+.hero-slide:nth-child(1) {
+  background-image: url('images/skyshell4.jpeg');
+  animation-delay: 0s;
+}
+
+.hero-slide:nth-child(2) {
+  background-image: url('images/DD_cube2.jpeg');
+  animation-delay: 3s;
+}
+
+.hero-slide:nth-child(3) {
+  background-image: url('images/octagon4.jpeg');
+  animation-delay: 6s;
+}
+
+.hero-slide:nth-child(4) {
+  background-image: url('images/DD_oct1.jpeg');
+  animation-delay: 9s;
+}
+
+.hero-slide:nth-child(5) {
+  background-image: url('images/skyshell1.jpeg');
+  animation-delay: 12s;
+}
+
+@keyframes heroFade {
+
+  0% {
+    opacity: 0;
+  }
+
+  8% {
+    opacity: 1;
+  }
+
+  32% {
+    opacity: 1;
+  }
+
+  40% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 20px;
+}
+    h1 {
+      font-size: 72px;
+      font-weight: 300;
+      line-height: 1.1;
+    }
+
+    .hero p {
+      margin-top: 25px;
+      font-size: 20px;
+      opacity: 0.9;
+    }
+
+    .buttons {
+      margin-top: 40px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 16px 34px;
+      border-radius: 50px;
+      font-size: 16px;
+      transition: 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: #8a5a3b;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #73492e;
+    }
+
+   .btn-secondary {
+  background: #8a5a3b;
+      color: white;
+    }
+
+.btn-secondary:hover {
+ background: #73492e;
+}
+
+    section {
+      padding: 100px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title p {
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: #8a5a3b;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .section-title h2 {
+      font-size: 52px;
+      font-weight: 300;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about img {
+      width: 100%;
+      border-radius: 30px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .about h2 {
+      font-size: 48px;
+      font-weight: 300;
+      margin-bottom: 25px;
+    }
+
+    .features {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-box {
+      background: white;
+      padding: 30px;
+      border-radius: 24px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+
+    .feature-box h3 {
+      margin-bottom: 10px;
+    }
+
+    .cabins {
+      background: white;
+    }
+
+    .cabin-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .cabin-card {
+      background: #faf7f2;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: 0.3s ease;
+    }
+
+    .cabin-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .cabin-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      
+    }
+
+
+
+    .cabin-content {
+      padding: 30px;
+    }
+
+    .cabin-content h3 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 28px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .faq {
+      background: white;
+    }
+
+    .faq-item {
+      background: #faf7f2;
+      padding: 35px;
+      border-radius: 28px;
+      margin-bottom: 20px;
+    }
+
+    .faq-item h3 {
+      margin-bottom: 12px;
+      font-size: 24px;
+    }
+
+    .location {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      align-items: center;
+    }
+
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: 0;
+      border-radius: 30px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    .cta {
+      background: #1d1b19;
+      color: white;
+      text-align: center;
+      padding: 120px 7%;
+    }
+
+    .cta h2 {
+      font-size: 56px;
+      font-weight: 300;
+      margin-bottom: 25px;
+    }
+
+    .cta p {
+      max-width: 700px;
+      margin: auto;
+      opacity: 0.8;
+      font-size: 18px;
+    }
+
+    .cta .btn {
+      margin-top: 40px;
+      background: white;
+      color: black;
+    }
+
+    @media(max-width: 768px) {
+      h1 {
+        font-size: 48px;
+      }
+
+      .section-title h2,
+      .about h2,
+      .cta h2 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+
+  <div class="hero-slider">
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
+  </div>
+
+  <div class="hero-content">
+
+    <div class="hero-location">
+      Fatehpur • Jim Corbett • Nainital
+    </div>
+
+    <h1>The Wild Garden Glamping</h1>
+
+    <p>
+      Unique luxury cabins surrounded by forest views, mountain sunsets,
+      jacuzzi and unforgettable glamping experiences.
+    </p>
+
+    <div class="buttons">
+      <a class="btn btn-primary" href="https://wa.me/919634307932" target="_blank">
+        Check Availability
+      </a>
+
+      <a class="btn btn-secondary" href="https://www.instagram.com/thewildgardenglamping/" target="_blank">
+        View Instagram
+      </a>
+    </div>
+
+  </div>
+
+</section>
+
+
+  <section>
+    <div class="about">
+      <div>
+        <h2>Luxury glamping designed for unforgettable stays.</h2>
+
+        <p>
+          Experience private cabins, forest views, cinematic sunsets,
+          warm interiors and premium atmosphere near Jim Corbett National Park.
+        </p>
+
+        <div class="features">
+          <div class="feature-box">
+            <h3>Private Cabins</h3>
+            <p>Unique stays for couples & groups</p>
+          </div>
+
+<div class="feature-box">
+  <h3>Private Jacuzzi Experience</h3>
+  <p>Relax under the open sky with warm bubbling water & peaceful mountain vibes</p>
+</div>
+
+          <div class="feature-box">
+            <h3>Bonfire Nights</h3>
+            <p>Available on request</p>
+          </div>
+
+          <div class="feature-box">
+            <h3>Decor Setups</h3>
+            <p>Proposal & anniversary decorations</p>
+          </div>
+        </div>
+      </div>
+
+      <img src="images/hero.jpeg">
+    </div>
+  </section>
+
+  <section class="cabins">
+    <div class="section-title">
+      <p>Cabins</p>
+      <h2>Choose Your Stay</h2>
+    </div>
+
+    <div class="cabin-grid">
+
+
+
+
+	 <a href="sky_shell.html" class="cabin-card">
+  		<img src="images/skyshell1.jpeg" alt="Sky Shell">
+  		<div class="cabin-content">
+    		<h3>Sky Shell</h3>
+    		<p>Starting from ₹3,900 / 2 guests</p>
+ 		 </div>
+	</a> 
+
+     	<a href="DD_cube.html" class="cabin-card">
+  		<img src="images/DD_cube3.jpg" alt="Double Decker Cube">
+  		<div class="cabin-content">
+    		<h3>Double Decker Cube</h3>
+    		<p>Starting from ₹4,000 / 2 guests</p>
+ 		 </div>
+	</a> 
+
+   	
+      	<a href="octagon.html" class="cabin-card">
+  		<img src="images/octagon4.jpeg" alt="The Octagon">
+  		<div class="cabin-content">
+    		<h3>The Octagon (with jacuzzi)</h3>
+    		<p>Starting from ₹7,000 / 2 guests</p>
+ 		 </div>
+	</a> 
+
+      	<a href="DD_oct.html" class="cabin-card">
+  		<img src="images/DD_oct10.jpeg" alt="Double Decker Octagon">
+  		<div class="cabin-content">
+    		<h3>Double Decker Octagon (with jacuzzi)</h3>
+    		<p>Starting from ₹7,000 / 2 guests</p>
+ 		 </div>
+	</a> 
+
+
+
+       	<a href="cube.html" class="cabin-card">
+  		<img src="images/cube1.jpeg" alt="The Cube">
+  		<div class="cabin-content">
+    		<h3>The Cube (with jacuzzi)</h3>
+    		<p>Starting from ₹6,000 / 2 guests</p>
+ 		 </div>
+	</a> 
+
+  
+
+    
+
+    </div>
+  </section>
+
+
+
+  <section class="faq">
+    <div class="section-title">
+      <p>FAQs</p>
+      <h2>Everything You Need To Know</h2>
+    </div>
+
+    <div class="faq-item">
+      <h3>Check-in & Check-out timings?</h3>
+      <p>Check-in is at 1 PM and check-out is at 10 AM.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Is food available?</h3>
+      <p>Yes. Food can be ordered directly from our menu.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Are bonfire and decorations included?</h3>
+      <p>Bonfire and decoration setups are available at additional charges.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How can I book?</h3>
+      <p>Bookings are handled directly through WhatsApp and Instagram.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="location">
+      <div>
+        <div class="section-title" style="text-align:left; margin-bottom:30px;">
+          <p>Location</p>
+          <h2>Fatehpur, Jim Corbett National Park, Nainital</h2>
+        </div>
+
+        <p>
+          Surrounded by forest views and mountain landscapes,
+          The Wild Garden Glamping offers a peaceful luxury stay experience.
+        </p>
+
+        <div class="buttons" style="justify-content:flex-start; margin-top:35px;">
+          <a class="btn btn-primary" href="https://maps.app.goo.gl/xSQHiFbBNkNa2h1Y9?g_st=iw" target="_blank">
+            Open Google Maps
+          </a>
+
+          <a class="btn btn-primary" href="https://www.instagram.com/thewildgardenglamping/" target="_blank">
+            Instagram
+          </a>
+        </div>
+      </div>
+
+      <iframe 
+  	 src="https://www.google.com/maps?q=29.4195874,79.3280824&z=16&output=embed" 
+ 	 width="100%"
+  	 height="350"
+  	 style="border:0;"
+  	 allowfullscreen=""
+  	 loading="lazy">
+     </iframe>
+
+    </div>
+  </section>
+
+<section class="cta">
+  <p style="letter-spacing:4px; text-transform:uppercase; opacity:0.6; margin-bottom:10px;">
+    Limited Cabins
+  </p>
+
+  <h2>Plan Your Next Glamping Escape</h2>
+
+  <p>
+    Message us directly to check live availability,
+    pricing and decoration options.
+  </p>
+
+<p style="margin-top:15px; font-size:18px; font-weight:600;">
+  Contact:
+  <a href="tel:9868734324">9868734324</a> /
+  <a href="tel:9634307932">9634307932</a>
+</p>
+  <a class="btn" href="https://wa.me/919634307932" target="_blank">
+    WhatsApp Us
+  </a>
+</section>
+
+</body>
+</html>
