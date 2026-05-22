@@ -87,10 +87,18 @@
 
 <body>
 
-  <header>
-    <a href="index.html">← Back to Home</a>
-    <a href="https://wa.me/919634307932" target="_blank">Book on WhatsApp</a>
-  </header>
+<header>
+  <a href="index.html">← Back to Home</a>
+
+  <a href="https://wa.me/919634307932"
+     target="_blank"
+     onclick="gtag('event','whatsapp_click',{
+       'event_category':'Booking Intent',
+       'event_label':'Sky Shell WhatsApp'
+     });">
+    Book on WhatsApp
+  </a>
+</header>
 
   <section class="hero">
     <h1>Sky Shell</h1>
