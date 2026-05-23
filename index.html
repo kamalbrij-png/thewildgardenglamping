@@ -402,11 +402,16 @@
     Check Availability
   </a>
 
-  <a class="btn btn-secondary"
-     href="https://www.instagram.com/thewildgardenglamping/"
-     target="_blank">
-    View Instagram
-  </a>
+ <a class="btn btn-secondary"
+   href="https://www.instagram.com/thewildgardenglamping/"
+   target="_blank"
+   onclick="gtag('event','instagram_click',{
+     'event_category':'Social Intent',
+     'event_label':'Homepage Instagram',
+     'transport_type':'beacon'
+   });">
+  View Instagram
+</a>
 </div>
 
   </div>
