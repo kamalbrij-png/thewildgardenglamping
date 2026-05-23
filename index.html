@@ -390,15 +390,24 @@
       jacuzzi and unforgettable glamping experiences.
     </p>
 
-    <div class="buttons">
-      <a class="btn btn-primary" href="https://wa.me/919634307932" target="_blank">
-        Check Availability
-      </a>
+   <div class="buttons">
+  <a class="btn btn-primary"
+     href="https://wa.me/919634307932"
+     target="_blank"
+     onclick="gtag('event','availability_click',{
+       'event_category':'Booking Intent',
+       'event_label':'Homepage Availability',
+       'transport_type':'beacon'
+     });">
+    Check Availability
+  </a>
 
-      <a class="btn btn-secondary" href="https://www.instagram.com/thewildgardenglamping/" target="_blank">
-        View Instagram
-      </a>
-    </div>
+  <a class="btn btn-secondary"
+     href="https://www.instagram.com/thewildgardenglamping/"
+     target="_blank">
+    View Instagram
+  </a>
+</div>
 
   </div>
 

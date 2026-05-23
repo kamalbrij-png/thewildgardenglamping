@@ -115,12 +115,18 @@
     <img src="images/DD_cube_int4.jpeg" alt="Double Decker Cube">
     <img src="images/DD_cube_int5.jpeg" alt="Double Decker Cube">
   </section>
-
-  <div class="cta">
-    <a class="btn" href="https://wa.me/919634307932" target="_blank">
-      Check Availability on WhatsApp
-    </a>
-  </div>
+<div class="cta">
+  <a class="btn"
+     href="https://wa.me/919634307932"
+     target="_blank"
+     onclick="gtag('event','availability_click',{
+       'event_category':'Booking Intent',
+       'event_label':'DD Cube Availability',
+       'transport_type':'beacon'
+     });">
+    Check Availability on WhatsApp
+  </a>
+</div>
 
 </body>
 </html>

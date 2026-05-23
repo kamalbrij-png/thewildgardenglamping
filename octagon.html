@@ -137,12 +137,18 @@
     
 
 
-
-  <div class="cta">
-    <a class="btn" href="https://wa.me/919634307932" target="_blank">
-      Check Availability on WhatsApp
-    </a>
-  </div>
+<div class="cta">
+  <a class="btn"
+     href="https://wa.me/919634307932"
+     target="_blank"
+     onclick="gtag('event','availability_click',{
+       'event_category':'Booking Intent',
+       'event_label':'Octagon Availability',
+       'transport_type':'beacon'
+     });">
+    Check Availability on WhatsApp
+  </a>
+</div>
 
 </body>
 </html>
