@@ -56,6 +56,135 @@
   color: white;
 }
 
+
+.availability-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.availability-box {
+  background: #fffaf2;
+  max-width: 430px;
+  width: 100%;
+  border-radius: 22px;
+  padding: 26px;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  font-family: inherit;
+}
+
+.close-modal {
+  position: absolute;
+  right: 18px;
+  top: 14px;
+  border: none;
+  background: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.availability-box h2 {
+  margin-bottom: 8px;
+}
+
+.modal-subtitle {
+  color: #6b5f52;
+  margin-bottom: 20px;
+}
+
+.availability-box label {
+  display: block;
+  margin-top: 14px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.availability-box input,
+.availability-box select {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #d8c7b5;
+  border-radius: 12px;
+  font-size: 16px;
+}
+
+.check-btn,
+.whatsapp-btn,
+.try-btn {
+  width: 100%;
+  margin-top: 18px;
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.check-btn {
+  background: #183b2d;
+  color: white;
+}
+
+.whatsapp-btn {
+  background: #25D366;
+  color: white;
+}
+
+.try-btn {
+  background: #eee2d2;
+  color: #2b2018;
+}
+
+.availability-result {
+  margin-top: 22px;
+}
+
+.status-card {
+  padding: 18px;
+  border-radius: 18px;
+  margin-top: 15px;
+}
+
+.good {
+  background: #e8f7ec;
+  border: 1px solid #6ccf83;
+}
+
+.limited {
+  background: #fff6d8;
+  border: 1px solid #e0b84d;
+}
+
+.soldout {
+  background: #ffe8e6;
+  border: 1px solid #dc6b61;
+}
+
+.status-title {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.status-text {
+  margin-bottom: 12px;
+  color: #4d4035;
+}
+
+.cabin-list {
+  margin: 10px 0;
+  padding-left: 18px;
+}
+
+
+
 .hero-slider {
   position: absolute;
   inset: 0;
@@ -365,6 +494,10 @@
     }
   </style>
 </head>
+
+
+
+
 <body>
 
   <section class="hero">
@@ -391,16 +524,13 @@
     </p>
 
    <div class="buttons">
-  <a class="btn btn-primary"
-     href="https://wa.me/919634307932"
-     target="_blank"
-     onclick="gtag('event','availability_click',{
-       'event_category':'Booking Intent',
-       'event_label':'Homepage Availability',
-       'transport_type':'beacon'
-     });">
-    Check Availability
-  </a>
+
+
+
+
+<a href="#" class="btn btn-secondary" onclick="openAvailabilityModal(event)">
+  Check Availability
+</a>
 
  <a class="btn btn-secondary"
    href="https://www.instagram.com/thewildgardenglamping/"
@@ -611,6 +741,226 @@
 
   
 </section>
+
+
+<div id="availabilityModal" class="availability-modal">
+  <div class="availability-box">
+    <button class="close-modal" onclick="closeAvailabilityModal()">×</button>
+
+    <h2>Check Availability</h2>
+    <p class="modal-subtitle">Select your date and number of guests.</p>
+
+    <label>Check-in Date</label>
+    <input type="date" id="checkinDate">
+
+    <label>Guests</label>
+    <select id="guestCount">
+      <option value="2">2 Guests</option>
+      <option value="4">3–4 Guests</option>
+      <option value="5">5+ Guests</option>
+    </select>
+
+    <button class="check-btn" onclick="checkAvailabilityStatus()">
+      Check Availability
+    </button>
+
+    <div id="availabilityResult" class="availability-result"></div>
+  </div>
+</div>
+
+<script>
+  const whatsappNumber = "919634307932";
+
+  const sheetCSV =
+    "https://docs.google.com/spreadsheets/d/1Bll6SMHaG00_Wa9sCi4FjisI1tB2AaTzK8Maxb7s_mY/export?format=csv&gid=658512070";
+
+  let availabilityData = [];
+
+  async function loadAvailabilityData() {
+    try {
+      const response = await fetch(sheetCSV);
+      const csvText = await response.text();
+      availabilityData = parseCSV(csvText);
+    } catch (error) {
+      console.error("Availability sheet error:", error);
+    }
+  }
+
+  function parseCSV(csvText) {
+    const rows = csvText.trim().split("\n").map(row => row.split(","));
+    const headers = rows[0].map(h => h.trim());
+
+    return rows.slice(1).map(row => {
+      const item = {};
+      headers.forEach((header, index) => {
+        item[header] = row[index]?.trim();
+      });
+      return item;
+    });
+  }
+
+  function openAvailabilityModal(event) {
+    event.preventDefault();
+    document.getElementById("availabilityModal").style.display = "flex";
+
+    if (!availabilityData.length) {
+      loadAvailabilityData();
+    }
+  }
+
+  function closeAvailabilityModal() {
+    document.getElementById("availabilityModal").style.display = "none";
+  }
+
+  function formatDateForSheet(date) {
+    const [year, month, day] = date.split("-");
+    return `${month}/${day}/${year}`;
+  }
+
+  function checkAvailabilityStatus() {
+    const date = document.getElementById("checkinDate").value;
+    const guests = document.getElementById("guestCount").value;
+    const resultBox = document.getElementById("availabilityResult");
+
+    if (!date) {
+      resultBox.innerHTML = `<p style="color:red;">Please select a check-in date.</p>`;
+      return;
+    }
+
+    const sheetDate = formatDateForSheet(date);
+    const row = availabilityData.find(item => item.Date === sheetDate);
+
+    if (!row) {
+      resultBox.innerHTML = `
+        <div class="status-card limited">
+          <div class="status-title">🟡 Date Not Found</div>
+          <div class="status-text">
+            We couldn't find this date in our availability calendar. Please check with our team.
+          </div>
+          ${renderWhatsAppButton("Check with Team on WhatsApp", date, guests, "Date Not Found")}
+        </div>
+      `;
+      return;
+    }
+
+    const cabins = [
+      "The Cube",
+      "The Octagon",
+      "Double decker (the cube)",
+      "Double decker (the octagon)",
+      "Sky Shell"
+    ];
+
+    const availableCabins = cabins.filter(cabin => row[cabin] === "1");
+    const count = availableCabins.length;
+
+    let status = "not_available";
+
+    if (count >= 4) {
+      status = "good";
+    } else if (count >= 2) {
+      status = "limited";
+    } else if (count === 1) {
+      status = "nearly_sold_out";
+    }
+
+    resultBox.innerHTML = renderAvailabilityCard(status, date, guests, availableCabins);
+  }
+
+  function renderAvailabilityCard(status, date, guests, availableCabins) {
+    let title = "";
+    let text = "";
+    let cssClass = "";
+    let buttonText = "";
+
+    if (status === "good") {
+      title = "🟢 Good Availability";
+      text = "Several cabins are currently available for your selected date.";
+      cssClass = "good";
+      buttonText = "Continue on WhatsApp";
+    }
+
+    if (status === "limited") {
+      title = "🟡 Limited Availability";
+      text = "Only a few cabins are available for this date. We recommend checking quickly.";
+      cssClass = "limited";
+      buttonText = "Reserve on WhatsApp";
+    }
+
+    if (status === "nearly_sold_out") {
+      title = "🔴 Nearly Sold Out";
+      text = "Only 1 cabin is currently showing available for your selected date.";
+      cssClass = "soldout";
+      buttonText = "Check with Team on WhatsApp";
+    }
+
+    if (status === "not_available") {
+      title = "⚫ Nothing Available";
+      text = "No cabins are currently showing available for your selected date.";
+      cssClass = "soldout";
+      buttonText = "Ask About Nearby Dates on WhatsApp";
+    }
+
+    const cabinList = availableCabins.length
+      ? `
+        <div class="available-heading">Available cabins:</div>
+        <ul class="cabin-list">
+          ${availableCabins.map(cabin => `<li>${cabin}</li>`).join("")}
+        </ul>
+      `
+      : `
+        <div class="available-heading">Available cabins:</div>
+        <ul class="cabin-list">
+          <li>No cabins currently available</li>
+        </ul>
+      `;
+
+    return `
+      <div class="status-card ${cssClass}">
+        <div class="status-title">${title}</div>
+        <div class="status-text">${text}</div>
+        ${cabinList}
+        ${renderWhatsAppButton(buttonText, date, guests, title.replace(/[🟢🟡🔴⚫]/g, "").trim(), availableCabins)}
+        <button class="try-btn" onclick="document.getElementById('checkinDate').focus()">
+          Try Different Date
+        </button>
+      </div>
+    `;
+  }
+
+  function renderWhatsAppButton(buttonText, date, guests, status, availableCabins = []) {
+    const availableText = availableCabins.length
+      ? availableCabins.join(", ")
+      : "No cabins currently available";
+
+    const message = encodeURIComponent(
+      `Hi, I checked availability on your website.\n\n` +
+      `Check-in Date: ${date}\n` +
+      `Guests: ${guests}\n` +
+      `Status shown: ${status}\n` +
+      `Available cabins shown: ${availableText}\n\n` +
+      `Please confirm availability.`
+    );
+
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+    return `
+      <button class="whatsapp-btn" onclick="window.open('${whatsappUrl}', '_blank')">
+        ${buttonText}
+      </button>
+    `;
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById("availabilityModal");
+    if (event.target === modal) {
+      closeAvailabilityModal();
+    }
+  };
+
+  loadAvailabilityData();
+</script>
+
 
 </body>
 </html>
