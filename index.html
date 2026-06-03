@@ -64,8 +64,9 @@
   inset: 0;
   background: rgba(0,0,0,0.55);
   justify-content: center;
-  align-items: center;
-  padding: 20px;
+  align-items: flex-start;
+  padding: 24px 16px;
+  overflow-y: auto;
 }
 
 .availability-box {
@@ -75,19 +76,43 @@
   border-radius: 22px;
   padding: 26px;
   position: relative;
+  margin: 40px auto;
   box-shadow: 0 20px 50px rgba(0,0,0,0.25);
-  font-family: inherit;
 }
 
 .close-modal {
-  position: absolute;
-  right: 18px;
-  top: 14px;
+  position: sticky;
+  top: 0;
+  float: right;
   border: none;
-  background: none;
+  background: #fffaf2;
   font-size: 28px;
+  font-weight: 700;
   cursor: pointer;
+  z-index: 10001;
 }
+
+
+@media (max-width: 600px) {
+  .availability-modal {
+    align-items: flex-start;
+    padding-top: max(60px, env(safe-area-inset-top));
+    padding-bottom: 80px;
+  }
+
+  .availability-box {
+    margin-top: 0;
+    max-height: none;
+    border-radius: 18px;
+  }
+
+  .close-modal {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+  }
+}
+
 
 .availability-box h2 {
   margin-bottom: 8px;
